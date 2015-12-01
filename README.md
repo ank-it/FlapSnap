@@ -7,3 +7,4 @@ First you have to run the mongodb using mongod command.
 Then you have to use npm start command to run the server.
 
 
+And you are done. Just visit @ localhost:3000 in your browser. 
