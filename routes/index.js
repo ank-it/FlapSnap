@@ -28,7 +28,12 @@ router.get('/posts', function(req,res,next){
 
 //POST Adding the posts/images to the databse
 router.post('/post', function(req,res,next){
-	var imagePost = new Post(req.body);
+	console.log(req.body.title);
+
+	var imagePost = new Post({
+		title: req.body.title,
+		link : req.body.link
+	});
 	imagePost.save(function(err, result){
 		if(err){
 			return next(err);

@@ -37,7 +37,8 @@ passport.deserializeUser(function(id, done) {
 passport.use(new FacebookStrategy({
     clientID: fbConfig.appID,
     clientSecret: fbConfig.appSecret,
-    callbackURL: fbConfig.callbackUrl
+    callbackURL: fbConfig.callbackUrl,
+    profileFields: ['id', 'first_name', 'last_name', 'photos', 'emails']
   },
 
 
@@ -55,13 +56,14 @@ passport.use(new FacebookStrategy({
           } else {
             // if there is no user found with that facebook id, create them
             var newUser = new User();
- 
+            
+            //console.log(profile);
             // set all of the facebook information in our user model
             newUser.id    = profile.id;                 
             newUser.access_token = accessToken;                 
-            newUser.firstName  = profile.name.givenName;
-            newUser.lastName = profile.name.familyName; 
-            //newUser.email = profile.emails[0].value; 
+            newUser.name  = profile.givenName;
+            newUser.profilePicture = profile.photos[0].value; 
+            newUser.email = profile.emails[0].value; 
  
             // save our user to the database
             newUser.save(function(err) {
