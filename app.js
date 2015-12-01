@@ -97,8 +97,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //For storing the uploaded images 
-app.use('/uploads', express.static(__dirname + '/uploads'));
-app.use(multer({dest: './uploads/'}))
+//app.use('/uploads', express.static(__dirname + '/uploads'));
+//app.use(multer({dest: './uploads/'}))
 
 
 app.use('/', routes);
