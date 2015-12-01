@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <title>Posts Page</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+     
+      <a class="navbar-brand" href="#">FlapSnap</a>
+    </div>
+
+    
+      <ul class="nav navbar-nav navbar-right ">
+       <li>
+
+        <a href="/posts">Timeline</a>
+        </li>
+        <li>
+
+        <a href="#"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>Upload New Image</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class=""></span> All your images </h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <ul>
+            <% posts.forEach(function(post) { %>
+
+            <li>
+
+                <div class="well">
+                <h3 class="text-primary"><span class=""></span> <%= post.title %></h3>
+
+                    <p>
+                       <%= post.text %> 
+                    </p>
+
+            </div>
+                     
+
+                    
+            </li>
+
+            <% }); %>
+        </ul>
+
+
+    </div>
+
+</div>
+</body>
+</html>
