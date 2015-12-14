@@ -1,8 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
+
+// var uploading = multer({
+//   dest: __dirname + '../public/uploads/',
+//     limits: {fileSize: 1000000, files:1}
+
+// });
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -42,6 +50,35 @@ router.post('/post', function(req,res,next){
 		res.json(imagePost);
 	});
 });
+
+
+
+router.post('/postimage' , function(req,res,next){
+	console.log(req.body.title);
+	  console.dir(req.files);
+
+	var imagePost = new Post({
+		title: req.body.title,
+		link : req.body.link
+	});
+
+	// imagePost.save(function(err, result){
+	// 	if(err){
+	// 		return next(err);
+	// 	}
+
+	// 	res.json(imagePost);
+	// });
+	
+res.render('profile.ejs', {
+		user : req.user
+	});
+});
+
+
+
+
+
 
 //GET image with its id
 router.get('/post/:id', function(req,res,next){

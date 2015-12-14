@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport')
+var multer = require('multer');
 var FacebookStrategy = require('passport-facebook').Strategy
 var fbConfig =  require('./config/fb')
 var mongoose = require('mongoose');
@@ -106,6 +107,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -136,6 +138,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+//app.use(multer({dest:'./uploads/'}));
 
 
 module.exports = app;
